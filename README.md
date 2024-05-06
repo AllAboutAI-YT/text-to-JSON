@@ -2,7 +2,7 @@
 Text to JSON for easy Fine-tuning examples
 
 ### YouTube Tutorial
-[[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/DeuyD-ZA-58/0.jpg)](https://www.youtube.com/watch?v=DeuyD-ZA-58)]
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/DeuyD-ZA-58/0.jpg)](https://www.youtube.com/watch?v=DeuyD-ZA-58)
 
 ### Setup
 1. git clone
