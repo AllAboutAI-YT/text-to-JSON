@@ -36,7 +36,7 @@ def parse_problems(text):
 
 def main():
     # Read the dataset file
-    text = read_file("leetcode_dataset.txt")
+    text = read_file("leetcodedata.txt")
     problems = parse_problems(text)
     
     # Convert and write to JSON
