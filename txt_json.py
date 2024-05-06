@@ -1,8 +1,5 @@
 import os
 import json
-import openai
-import os
-import json
 
 def read_file(filepath):
     """Reads the content of a file and returns it."""
