@@ -40,8 +40,8 @@ def main():
     problems = parse_problems(text)
     
     # Convert and write to JSON
-    write_to_json(problems, "leetcode_problems4.json")
-    print("Problems parsed and written to leetcode_problems3.json")
+    write_to_json(problems, "leetcode_problems.json")
+    print("Problems parsed and written to leetcode_problems.json")
 
 if __name__ == "__main__":
     main()
