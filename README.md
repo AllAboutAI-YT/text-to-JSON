@@ -1,8 +1,7 @@
 # text-to-JSON
 Text to JSON for easy Fine-tuning examples
 
-###
-YouTube Tutorial
+### YouTube Tutorial
 [[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/DeuyD-ZA-58/0.jpg)](https://www.youtube.com/watch?v=DeuyD-ZA-58)]
 
 ### Setup
