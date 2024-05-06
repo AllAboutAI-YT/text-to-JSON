@@ -24,7 +24,7 @@ def parse_problems(text):
                 problems.append(current_problem)
             current_problem = {'instruction': 'Solve the following leet code problem', 'input': '', 'output': ''}
             current_key = 'input'
-        elif line.startswith('- How to solve problem') or line.startswith('- Solution to Problem'):
+        elif line.startswith('- Solution to Problem'):
             current_key = 'output'
         elif current_key:
             current_problem[current_key] += line + '\n'
