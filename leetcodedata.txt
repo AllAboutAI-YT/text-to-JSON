@@ -1,0 +1,217 @@
+- Problem 1:
+You are given two arrays of equal length, nums1 and nums2.
+
+Each element in nums1 has been increased (or decreased in the case of negative) by an integer, represented by the variable x.
+
+As a result, nums1 becomes equal to nums2. Two arrays are considered equal when they contain the same integers with the same frequencies.
+
+Return the integer x.
+
+Example 1:
+
+Input: nums1 = [2,6,4], nums2 = [9,7,5]
+
+Output: 3
+
+Explanation:
+
+The integer added to each element of nums1 is 3.
+
+Example 2:
+
+Input: nums1 = [10], nums2 = [5]
+
+Output: -5
+
+Explanation:
+
+The integer added to each element of nums1 is -5.
+
+Example 3:
+
+Input: nums1 = [1,1,1,1], nums2 = [1,1,1,1]
+
+Output: 0
+
+Explanation:
+
+The integer added to each element of nums1 is 0.
+
+Constraints:
+
+1 <= nums1.length == nums2.length <= 100
+0 <= nums1[i], nums2[i] <= 1000
+The test cases are generated in a way that there is an integer x such that nums1 can become equal to nums2 by adding x to each element of nums1.
+
+class Solution:
+    def addedInteger(self, nums1: List[int], nums2: List[int]) -> int:
+        
+		
+- Solution to Problem 1:
+Step-by-step plan to solve problem 1:
+
+1. Calculate the sum of all elements in `nums1` and store it in a variable `sum1`.
+2. Calculate the sum of all elements in `nums2` and store it in a variable `sum2`.
+3. Calculate the difference between `sum2` and `sum1` and store it in a variable `diff`.
+4. Divide `diff` by the length of `nums1` (which is equal to the length of `nums2`) to get the integer `x` that was added to each element of `nums1`.
+5. Return the integer `x` as the result.
+
+Solution in Python code (Python 3 syntax):
+
+class Solution:
+    def addedInteger(self, nums1: List[int], nums2: List[int]) -> int:
+        sum1 = sum(nums1)
+        sum2 = sum(nums2)
+        diff = sum2 - sum1
+        x = diff // len(nums1)
+        return x
+
+Explanation:
+
+1. We calculate the sum of all elements in `nums1` using the `sum()` function and store it in the variable `sum1`.
+2. We calculate the sum of all elements in `nums2` using the `sum()` function and store it in the variable `sum2`.
+3. We calculate the difference between `sum2` and `sum1` and store it in the variable `diff`. This represents the total difference between the corresponding elements of `nums1` and `nums2`.
+4. We divide `diff` by the length of `nums1` (which is equal to the length of `nums2`) using integer division (`//`) to get the integer `x` that was added to each element of `nums1`. Since the problem guarantees that there exists an integer `x` such that adding `x` to each element of `nums1` makes it equal to `nums2`, we can safely use integer division.
+5. Finally, we return the integer `x` as the result.
+
+The time complexity of this solution is O(n), where n is the length of `nums1` (and `nums2`), as we iterate over both arrays once to calculate their sums. The space complexity is O(1) since we only use a constant amount of extra space.
+
+
+- Problem 2:
+
+You are given a string s and an integer k.
+
+Define a function distance(s1, s2) between two strings s1 and s2 of the same length n as:
+
+The sum of the minimum distance between s1[i] and s2[i] when the characters from 'a' to 'z' are placed in a cyclic order, for all i in the range [0, n - 1].
+
+For example, distance("ab", "cd") == 4, and distance("a", "z") == 1.
+
+You can change any letter of s to any other lowercase English letter, any number of times.
+
+Return a string denoting the
+
+lexicographically smallest
+
+stringtyou can get after some changes, such thatdistance(s, t) <= k. 
+
+Example 1:
+
+Input: s = "zbbz", k = 3
+
+Output: "aaaz"
+
+Explanation:
+
+Change s to "aaaz". The distance between "zbbz" and "aaaz" is equal to k = 3.
+
+Example 2:
+
+Input: s = "xaxcd", k = 4
+
+Output: "aawcd"
+
+Explanation:
+
+The distance between "xaxcd" and "aawcd" is equal to k = 4.
+
+Example 3:
+
+Input: s = "lol", k = 0
+
+Output: "lol"
+
+Explanation:
+
+It's impossible to change any character as k = 0.
+
+Constraints:
+
+1 <= s.length <= 100
+
+0 <= k <= 2000
+
+s consists only of lowercase English letters.
+
+Solve problem 2 using Python code (python3 syntax):	
+
+class Solution(object):
+
+    def getSmallestString(self, s, k):
+
+        """
+
+        :type s: str
+
+        :type k: int
+
+        :rtype: str
+
+        """		
+
+- Solution to Problem 2:
+
+This problem involves finding a lexicographically smallest string t from the given string s under the constraint that the total cyclic distance between s and t does not exceed k. The approach to solve this problem can be applied to a wide range of problems involving optimization under constraints, particularly when the solution space is defined by a set of operations on string characters. Here's the step-by-step reasoning:
+
+Step 1: Understanding the Constraint and Optimization Goal
+Constraint: The sum of cyclic distances between corresponding characters of s and the resulting string t should not exceed k.
+Optimization Goal: Make t as lexicographically small as possible.
+Step 2: Breaking Down the Problem
+Cyclic Distance: First, it's crucial to understand what cyclic distance means in the context of the lowercase English alphabet arranged in a circle. The cyclic distance between two characters is the minimum steps needed to reach from one to the other in either direction.
+Lexicographically Smallest String: To achieve this, the target string t should start with as many 'a's as possible, given the constraint.
+Step 3: Implementing a Helper Function
+Calculate Cyclic Distance: A helper function calculateDistance calculates the cyclic distance between any two characters. This is essential for determining how far and in which direction we can change a character in s to contribute to the goal while adhering to the constraint.
+Step 4: Iterative Optimization
+Iterate Through Each Character in s: For each character in the given string s, the algorithm tries to replace it with the lexicographically smallest possible character ('a') without exceeding the distance budget k.
+Adjustment Within Constraint: If changing a character in s to 'a' exceeds the budget, the algorithm finds the closest possible character to 'a' that can be achieved within the remaining budget. This ensures that each character contributes to the lexicographical minimality of t without violating the distance constraint.
+Step 5: Updating the Constraint Budget
+Deduct Used Distance: After adjusting each character, the used distance is deducted from k. This dynamically updates the remaining distance budget for subsequent characters, ensuring the total distance does not exceed k.
+Step 6: Concatenating the Result
+Build the Resulting String: By concatenating each adjusted character, the algorithm builds the resulting string t step by step, ensuring it's the lexicographically smallest possible under the given constraints.
+Generalization for Similar Problems
+This problem-solving approach can be generalized for other optimization problems, especially those involving strings and constraints:
+
+Define and understand the constraints and optimization criteria clearly.
+Break down the problem into smaller pieces if necessary, often by iterating through elements (characters in this case) and making local optimizations that contribute to the global goal.
+Implement helper functions for repeated calculations or operations (like the cyclic distance calculation here).
+Iteratively make local optimizations under the constraints, adjusting your approach based on the remaining budget or constraint limit.
+Update your constraint budget as you make choices to ensure global constraints are not violated.
+Construct your solution step by step, ensuring it meets both the optimization criteria and the constraints.
+This methodical approach helps in tackling complex problems by making them more manageable, focusing on local optimizations that contribute to the overall goal while respecting constraints.
+
+Here's the Python code that implements the above approach:
+class Solution(object):
+    def getSmallestString(self, s, k):
+        """
+        :type s: str
+        :type k: int
+        :rtype: str
+        """
+        result = ""
+        for char in s:
+            smallest_char = 'a'
+            distance = self.calculateDistance(char, smallest_char)
+            while distance > k:
+                smallest_char = chr(ord(smallest_char) + 1)
+                distance = self.calculateDistance(char, smallest_char)
+            result += smallest_char
+            k -= distance
+        return result
+
+    def calculateDistance(self, char1, char2):
+        return min(abs(ord(char1) - ord(char2)), 26 - abs(ord(char1) - ord(char2)))
+
+Explanation:
+
+- The `getSmallestString` function takes the string `s` and the integer `k` as input.
+- It initializes an empty string `result` to store the lexicographically smallest string.
+- It iterates through each character in `s` using a `for` loop.
+- For each character, it starts with the character 'a' and calculates the distance between the current character and 'a' using the `calculateDistance` helper function.
+- If the distance is greater than `k`, it increments the character to the next one and repeats the process until the distance is less than or equal to `k`.
+- It appends the found character to the `result` string.
+- It subtracts the distance between the original character and the found character from `k`.
+- Finally, it returns the `result` string as the lexicographically smallest string that satisfies the distance condition.
+
+The `calculateDistance` helper function calculates the minimum distance between two characters in a cyclic order. It takes two characters `char1` and `char2` as input and returns the minimum distance between them.
+
+The time complexity of this solution is O(n * 26), where n is the length of the string `s`, as we iterate through each character and may need to check all 26 lowercase English letters in the worst case. The space complexity is O(n) to store the `result` string.		
